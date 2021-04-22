@@ -1,24 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Button } from '@material-ui/core';
+import { Button } from '@material-ui/core'
+import { useDispatch } from 'react-redux'
+import { addTodo } from '../redux/todoSlice'
 
 
 const AddToDoForm = () => {
+
+    const [value, setValue] = useState('');
+    const dispatch = useDispatch();
+
+    const onSubmit = (event) => {
+        event.preventDefault();
+        console.log({ value });
+        dispatch(addTodo({
+            title: value,
+        }))
+
+    }
     return (
-        <Container>
+        <Form onSubmit={onSubmit}>
             <InputText>
-                <input type="text" placeholder="add to do..." />
+                <input
+                    type="text"
+                    placeholder="add to do..."
+                    onChange={(event) => setValue(event.target.value)}
+                />
             </InputText>
-            <Button variant="outlined" color="primary">
+            <Button variant="outlined" color="primary" type='submit'>
                 Add
             </Button>
-        </Container>
+        </Form>
     )
 }
 
 export default AddToDoForm
 
-const Container = styled.div`
+const Form = styled.form`
     display:flex;
     justify-content:space-between;
 `
