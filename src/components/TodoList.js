@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteTodo } from '../redux/todoSlice'
+import { deleteTodo, toggleCompleted } from '../redux/todoSlice'
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline'
+import { Checkbox } from '@material-ui/core';
 
 const TodoItem = ({ todo }) => {
     const dispatch = useDispatch();
@@ -11,10 +12,23 @@ const TodoItem = ({ todo }) => {
         dispatch(deleteTodo({ id: todo.id }));
 
     }
+
+    const handleChange = () => {
+        dispatch(toggleCompleted({ id: todo.id, completed: !todo.completed }))
+    }
+
     return (
         <TodoItemContainer>
             <ItemText>
-                <span>{todo.title}</span>
+                <span style={todo.completed ? { "textDecoration": "line-through" } : { "": "" }}>
+                    <Checkbox
+                        checked={todo.completed}
+                        color="primary"
+                        onChange={handleChange}
+                        inputProps={{ 'aria-label': 'secondary checkbox' }}
+                    />
+                    <span>{todo.title}</span>
+                </span>
             </ItemText>
             <DeleteTodo
                 onClick={handleDeleteTodo}
@@ -57,6 +71,14 @@ const TodoItemContainer = styled.div`
 const ItemText = styled.div`
     width:95%;
     word-wrap:break-word;
+    span{
+        display:flex;
+        align-items:center;
+
+        span{
+            word-break:break-word;
+        }
+    }
 `
 const DeleteTodo = styled.button`
     width:5%;

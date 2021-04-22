@@ -22,13 +22,14 @@ const NavBar = styled.div`
     z-index:100;
     display:flex;
     align-items:center;
-    justify-content:space-between;
+    justify-content:center;
 `
 
 const NavbarBrand = styled.div`
     span{
         font-weight:700;
         font-size:2rem;
+        box-shadow:0 4px #09009f;
         background: -webkit-linear-gradient(45deg, #09009f, #00ff95 80%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
