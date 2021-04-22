@@ -70,6 +70,12 @@ const InputText = styled.div`
             box-shadow:unset;
         }
     }
+
+    @media screen and (max-width:768px){
+        input{
+            font-size:0.8rem;
+        }
+    }
 `
 
 const AddToDoButton = styled.div`

@@ -88,7 +88,7 @@ const DeleteTodo = styled.button`
     background-color:unset;
     border:unset;
     cursor:pointer;
-    padding:0.2rem;
+    padding:0.2rem 0.8rem 0.2rem 0.2rem;
     &:active{
         transform:scale(0.9);
         border:unset;

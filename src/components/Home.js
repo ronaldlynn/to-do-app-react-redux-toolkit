@@ -26,4 +26,7 @@ const Container = styled.div`
 `
 const TodoSection = styled.div`
     padding:3rem 2rem;
+    @media screen and (max-width:768px){
+        padding:3rem 0;
+    }
 `

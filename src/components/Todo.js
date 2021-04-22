@@ -48,4 +48,5 @@ const TodoListContainer = styled.div`
     overflow-y:auto;
 `
 const AddToDoFormContainer = styled.div`
+    overflow:hidden;
 `
