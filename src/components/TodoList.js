@@ -27,7 +27,7 @@ const TodoItem = ({ todo }) => {
                         onChange={handleChange}
                         inputProps={{ 'aria-label': 'secondary checkbox' }}
                     />
-                    <span>{todo.title}</span>
+                    <span>{todo.title}: {todo.subtitle}</span>
                 </span>
             </ItemText>
             <DeleteTodo

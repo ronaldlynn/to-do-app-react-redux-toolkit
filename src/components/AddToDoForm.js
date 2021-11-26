@@ -9,17 +9,22 @@ import { addTodo } from '../redux/todoSlice'
 const AddToDoForm = () => {
 
     const [value, setValue] = useState('');
+    const [subtitle, setSubtitle] = useState('');
     const dispatch = useDispatch();
 
     const onSubmit = (event) => {
         event.preventDefault();
-        const inputAddTodoEle = document.getElementById('inputAddTodo')
+        const inputAddTodoEle = document.getElementById('inputAddTodo');
+        const inputAddTodoSubtitleEle = document.getElementById('inputAddTodoSubtitle');
         inputAddTodoEle.value = '';
-        if (!value) return;
+        inputAddTodoSubtitleEle.value = '';
+        if (!value && !subtitle) return;
         dispatch(addTodo({
             title: value,
+            subtitle: subtitle,
         }))
         setValue('');
+        setSubtitle('');
     }
     return (
         <Form onSubmit={onSubmit}>
@@ -27,8 +32,14 @@ const AddToDoForm = () => {
                 <input
                     id="inputAddTodo"
                     type="text"
-                    placeholder="Add a task..."
+                    placeholder="Title"
                     onChange={(event) => setValue(event.target.value)}
+                />
+                <input
+                    id="inputAddTodoSubtitle"
+                    type="text"
+                    placeholder="Subtitle"
+                    onChange={(event) => setSubtitle(event.target.value)}
                 />
                 <AddToDoButton>
                     <Button color="primary" type='submit'>
